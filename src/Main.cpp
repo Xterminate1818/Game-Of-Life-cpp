@@ -2,23 +2,39 @@
 #include <SDL_image.h>
 #include <stdio.h>
 #include "rendering/App.h"
-#include "geometry/Rect.h"
+#include "geometry/Grid.h"
 
 int main(int argc, char* args[]) {
-    App::init();
-    Rect r(0, 0, 25, 25);
+    App::init(800, 800);
+    Grid grid(25, 25);
+    std::cout << -1 % 25 << std::endl;
     bool quit = false;
     SDL_Event e;
     
     while (!quit) {
         while (SDL_PollEvent(&e) != 0) {
-            if (e.type == SDL_QUIT) {
+            switch (e.type) {
+            case SDL_QUIT:
                 quit = true;
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                if (SDL_BUTTON_LEFT) {
+                    int x = 0, y = 0;
+                    SDL_GetMouseState(&x, &y);
+                    x /= App::getWidth() / grid.gridWidth; y /= App::getHeight() / grid.gridHeight;
+                    grid.set(x, y, true);
+                }
+                break;
+
+            case SDL_KEYDOWN:
+                if (e.key.keysym.sym == SDLK_SPACE) grid.step();
+                break;
             }
         }
         SDL_SetRenderDrawColor(App::renderer, 0x00, 0x00, 0x00, 0x00);
         SDL_RenderClear(App::renderer);
-        Drawable::add(&r);
+        SDL_SetRenderDrawColor(App::renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+        Drawable::add(&grid);
         Drawable::drawScreen();
         SDL_RenderPresent(App::renderer);
     }

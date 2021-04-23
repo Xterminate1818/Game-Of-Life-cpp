@@ -24,7 +24,10 @@
     <ClCompile Include="src\rendering\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\geometry\Rect.cpp">
+    <ClCompile Include="src\geometry\Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +38,10 @@
     <ClInclude Include="src\rendering\Drawable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\Rect.h">
+    <ClInclude Include="src\geometry\Grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\Grid.h">
+    <ClInclude Include="src\util\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

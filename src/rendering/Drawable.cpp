@@ -1,8 +1,5 @@
 #include "Drawable.h"
 
-Uint32 Drawable::WHITE = -1;
-Uint32 Drawable::BLACK = 0;
-
 bool Drawable::Compare::operator() (const Drawable* a, const Drawable* b) {
 	return a->layer > b->layer;
 }
@@ -22,6 +19,9 @@ void Drawable::drawScreen() {
 			std::cout << "Warning: nullpointer in draw queue" << std::endl;
 		}
 	}
+	m_frameTimer.wait(frametime);
 }
 
 std::priority_queue<Drawable*, std::vector<Drawable*>, Drawable::Compare> Drawable::m_render_queue;
+Timer Drawable::m_frameTimer = Timer();
+Uint32 Drawable::frametime = 20;
