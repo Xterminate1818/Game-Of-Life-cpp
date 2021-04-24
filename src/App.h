@@ -21,8 +21,8 @@ namespace App {
 	extern Timer _frameTimer;
 	inline Uint32 frametime = 20;
 
-	void add(Drawable*);
-	void drawScreen();
+	void render(Drawable*);
+	void draw();
 
 	void init(int width, int height);
 	void cleanup();

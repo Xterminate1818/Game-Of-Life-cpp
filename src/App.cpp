@@ -7,11 +7,17 @@ SDL_Renderer* App::renderer = nullptr;
 std::vector<Drawable*> App::_draw_queue = std::vector<Drawable*>();
 Timer App::_frameTimer = Timer();
 
-void App::add(Drawable* d) {
+void App::render(Drawable* d) {
 	_draw_queue.push_back(d);
 }
 
-void App::drawScreen() {
+void App::draw() {
+	// Clear Screen
+	SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
+	SDL_RenderClear(renderer);
+
+	// Draw elements
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	while (!_draw_queue.empty()) {
 		Drawable* temp = _draw_queue[0];
 		_draw_queue.pop_back();

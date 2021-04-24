@@ -4,8 +4,11 @@ SDL_Event GRID_STEP = { SDL_RegisterEvents(1) };
 
 Grid::Grid(size_t width, size_t height) {
 	data = new bool[width * height];
-	for (int i = 0; i < width * height; i++)
+	temp = new bool[width * height];
+	for (int i = 0; i < width * height; i++) {
 		data[i] = false;
+		temp[i] = false;
+	}
 	gridWidth = width; 
 	gridHeight = height;
 }
@@ -69,18 +72,18 @@ int Grid::getNeighbors(int x, int y) {
 }
 
 void Grid::step() {
-	// Copy array
-	bool* newdata = new bool[(size_t)gridWidth * (size_t)gridHeight];
-	for (int i = 0; i < gridWidth * gridHeight; i++) newdata[i] = data[i];
-
+	// Write new board state to temporary grid
 	for (int x = 0; x < gridWidth; x++) {
 		for (int y = 0; y < gridHeight; y++) {
 			int n = getNeighbors(x, y);
-			if (get(x, y) && (n == 2 || n == 3)) newdata[x + y * gridHeight] = true;
-			else if (!get(x, y) && n == 3) newdata[x + y * gridHeight] = true;
-			else newdata[x + y * gridHeight] = false;
+			if (get(x, y) && (n == 2 || n == 3)) temp[x + y * gridHeight] = true;
+			else if (!get(x, y) && n == 3) temp[x + y * gridHeight] = true;
+			else temp[x + y * gridHeight] = false;
 		}
 	}
-	delete[] data;
-	data = newdata;
+
+	// Swap grids
+	bool* t = data;
+	data = temp;
+	temp = t;
 }

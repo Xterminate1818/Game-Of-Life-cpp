@@ -30,11 +30,8 @@ int main(int argc, char* args[]) {
                 break;
             }
         }
-        SDL_SetRenderDrawColor(App::renderer, 0x00, 0x00, 0x00, 0x00);
-        SDL_RenderClear(App::renderer);
-        SDL_SetRenderDrawColor(App::renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-        App::add(&grid);
-        App::drawScreen();
+        App::render(&grid);
+        App::draw();
         SDL_RenderPresent(App::renderer);
     }
     App::cleanup();

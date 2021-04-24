@@ -6,6 +6,7 @@ extern SDL_Event GRID_STEP;
 class Grid : public Drawable {
 protected:
 	bool* data = nullptr;
+	bool* temp = nullptr;
 	void drawGrid();
 	int getIndex(int x, int y);
 public:
