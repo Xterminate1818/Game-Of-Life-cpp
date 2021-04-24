@@ -1,5 +1,7 @@
 #include "Grid.h"
 
+SDL_Event GRID_STEP = { SDL_RegisterEvents(1) };
+
 Grid::Grid(size_t width, size_t height) {
 	data = new bool[width * height];
 	for (int i = 0; i < width * height; i++)

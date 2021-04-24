@@ -1,13 +1,15 @@
 #pragma once
-#include "../rendering/Drawable.h"
+#include "App.h"
+
+extern SDL_Event GRID_STEP;
 
 class Grid : public Drawable {
 protected:
 	bool* data = nullptr;
-	virtual void draw();
 	void drawGrid();
 	int getIndex(int x, int y);
 public:
+	virtual void draw();
 	Grid(size_t width, size_t height);
 	int gridWidth, gridHeight;
 	bool get(int x, int y);

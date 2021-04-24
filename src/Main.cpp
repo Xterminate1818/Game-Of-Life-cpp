@@ -1,13 +1,12 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <stdio.h>
-#include "rendering/App.h"
-#include "geometry/Grid.h"
+#include "App.h"
+#include "Grid.h"
 
 int main(int argc, char* args[]) {
     App::init(800, 800);
     Grid grid(25, 25);
-    std::cout << -1 % 25 << std::endl;
     bool quit = false;
     SDL_Event e;
     
@@ -34,8 +33,8 @@ int main(int argc, char* args[]) {
         SDL_SetRenderDrawColor(App::renderer, 0x00, 0x00, 0x00, 0x00);
         SDL_RenderClear(App::renderer);
         SDL_SetRenderDrawColor(App::renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-        Drawable::add(&grid);
-        Drawable::drawScreen();
+        App::add(&grid);
+        App::drawScreen();
         SDL_RenderPresent(App::renderer);
     }
     App::cleanup();

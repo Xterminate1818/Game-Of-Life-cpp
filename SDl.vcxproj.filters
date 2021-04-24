@@ -18,30 +18,24 @@
     <ClCompile Include="src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\rendering\Drawable.cpp">
+    <ClCompile Include="src\App.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\rendering\App.cpp">
+    <ClCompile Include="src\Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\geometry\Grid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\util\Timer.cpp">
+    <ClCompile Include="src\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\rendering\App.h">
+    <ClInclude Include="src\App.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\rendering\Drawable.h">
+    <ClInclude Include="src\Grid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\geometry\Grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\util\Timer.h">
+    <ClInclude Include="src\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
