@@ -1,39 +1,13 @@
+#include <iostream>
 #include <SDL.h>
-#include <SDL_image.h>
-#include <stdio.h>
-#include "App.h"
-#include "Grid.h"
+#include "rendering/App.h"
+#include "entity/Grid.h"
 
-int main(int argc, char* args[]) {
-    App::init(800, 800);
-    Grid grid(25, 25);
-    bool quit = false;
-    SDL_Event e;
-    
-    while (!quit) {
-        while (SDL_PollEvent(&e) != 0) {
-            switch (e.type) {
-            case SDL_QUIT:
-                quit = true;
-                break;
-            case SDL_MOUSEBUTTONDOWN:
-                if (SDL_BUTTON_LEFT) {
-                    int x = 0, y = 0;
-                    SDL_GetMouseState(&x, &y);
-                    x /= App::getWidth() / grid.gridWidth; y /= App::getHeight() / grid.gridHeight;
-                    grid.set(x, y, true);
-                }
-                break;
 
-            case SDL_KEYDOWN:
-                if (e.key.keysym.sym == SDLK_SPACE) grid.step();
-                break;
-            }
-        }
-        App::render(&grid);
-        App::draw();
-        SDL_RenderPresent(App::renderer);
-    }
-    App::cleanup();
+int main(int argc, char* argv[]) {
+    App app(800, 800);
+    Grid grid(800, 800);
+    app.addChild(&grid);
+    app.start();
     return 0;
 }

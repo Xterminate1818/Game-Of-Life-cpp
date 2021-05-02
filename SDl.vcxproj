@@ -121,7 +121,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <Optimization>Custom</Optimization>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,7 +139,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <Optimization>Custom</Optimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,15 +152,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Grid.cpp" />
-    <ClCompile Include="src\App.cpp" />
+    <ClCompile Include="src\entity\Grid.cpp" />
+    <ClCompile Include="src\rendering\App.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Timer.cpp" />
+    <ClCompile Include="src\util\Timer.cpp" />
+    <ClCompile Include="src\rendering\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Grid.h" />
-    <ClInclude Include="src\App.h" />
-    <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\entity\GameObject.h" />
+    <ClInclude Include="src\entity\Grid.h" />
+    <ClInclude Include="src\rendering\App.h" />
+    <ClInclude Include="src\util\Timer.h" />
+    <ClInclude Include="src\rendering\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\test.png" />
